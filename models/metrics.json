@@ -48,15 +48,15 @@
         ]
     },
     "RandomForest": {
-        "training_accuracy": 0.9192708333333334,
-        "testing_accuracy": 0.7916666666666666,
-        "precision": 0.8106942121887775,
-        "recall": 0.7916666666666666,
-        "f1_score": 0.7916938051816471,
+        "training_accuracy": 0.9114583333333334,
+        "testing_accuracy": 0.8125,
+        "precision": 0.8258806818181817,
+        "recall": 0.8125,
+        "f1_score": 0.8127355072463769,
         "confusion_matrix": [
             [
-                20,
-                6,
+                21,
+                5,
                 0
             ],
             [
@@ -66,8 +66,8 @@
             ],
             [
                 0,
-                9,
-                19
+                8,
+                20
             ]
         ]
     }

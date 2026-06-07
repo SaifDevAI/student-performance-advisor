@@ -22,49 +22,59 @@ df = pd.read_csv(DATA_PATH)
 # Preserve a copy of raw data for extracting UI sample profiles later
 df_raw = df.copy()
 
-# 2. Preprocess & Encode Features
-print("Preprocessing and encoding features...")
+# 2. Preprocess & Encode Features in the EXACT order of the Jupyter Notebook cells
+print("Preprocessing and encoding features in exact notebook sequence...")
 
-# Drop columns matching the Jupyter notebook
-df = df.drop(columns=["NationalITy", "PlaceofBirth"])
+# Step 1: gender encoding and dropping gender (added gender_encoded to the end)
+df['gender_encoded'] = df['gender'].map({'F': 0, 'M': 1})
+df = df.drop(columns=['gender'])
 
-# Map ordinal features
+# Step 2: Drop NationalITy
+df = df.drop(columns=["NationalITy"])
+
+# Step 3: Drop PlaceofBirth
+df = df.drop(columns=["PlaceofBirth"])
+
+# Step 4: Map StageID in place
 df['StageID'] = df['StageID'].map({
     'lowerlevel': 0,
     'MiddleSchool': 1,
     'HighSchool': 2
 })
 
-# Clean GradeID
+# Step 5: Clean GradeID in place
 df['GradeID'] = df['GradeID'].str.replace('G-', '').astype(int)
 
-# Binary/Label Encodings (alphabetic mappings consistent with LabelEncoder)
-df['gender_encoded'] = df['gender'].map({'F': 0, 'M': 1})
-df = df.drop(columns=['gender'])
-
-df['Semester_encoded'] = df['Semester'].map({'F': 0, 'S': 1})
-df = df.drop(columns=['Semester'])
-
-df['Relation_encoded'] = df['Relation'].map({'Father': 0, 'Mum': 1})
-df = df.drop(columns=['Relation'])
-
-df['ParentAnsweringSurvey_encoded'] = df['ParentAnsweringSurvey'].map({'No': 0, 'Yes': 1})
-df = df.drop(columns=['ParentAnsweringSurvey'])
-
-df['ParentschoolSatisfaction_encoded'] = df['ParentschoolSatisfaction'].map({'Bad': 0, 'Good': 1})
-df = df.drop(columns=['ParentschoolSatisfaction'])
-
-df['StudentAbsenceDays_encoded'] = df['StudentAbsenceDays'].map({'Above-7': 0, 'Under-7': 1})
-df = df.drop(columns=['StudentAbsenceDays'])
-
-# One-hot encodes SectionID and Topic
+# Step 6: SectionID dummy encoding, concat, and drop
+# Note: pd.get_dummies defaults to bool or int depending on pandas version. We force int to match sklearn requirements.
 SectionID_hotenc = pd.get_dummies(df["SectionID"], prefix="SectionID", dtype=int)
 df = pd.concat([df, SectionID_hotenc], axis=1).drop(columns=["SectionID"])
 
+# Step 7: Topic dummy encoding, concat, and drop
 Topic_hotenc = pd.get_dummies(df["Topic"], prefix="Topic", dtype=int)
 df = pd.concat([df, Topic_hotenc], axis=1).drop(columns=["Topic"])
 
-# Define numeric columns
+# Step 8: Semester encoding and drop
+df['Semester_encoded'] = df['Semester'].map({'F': 0, 'S': 1})
+df = df.drop(columns=['Semester'])
+
+# Step 9: Relation encoding and drop
+df['Relation_encoded'] = df['Relation'].map({'Father': 0, 'Mum': 1})
+df = df.drop(columns=['Relation'])
+
+# Step 10: ParentAnsweringSurvey encoding and drop
+df['ParentAnsweringSurvey_encoded'] = df['ParentAnsweringSurvey'].map({'No': 0, 'Yes': 1})
+df = df.drop(columns=['ParentAnsweringSurvey'])
+
+# Step 11: ParentschoolSatisfaction encoding and drop
+df['ParentschoolSatisfaction_encoded'] = df['ParentschoolSatisfaction'].map({'Bad': 0, 'Good': 1})
+df = df.drop(columns=['ParentschoolSatisfaction'])
+
+# Step 12: StudentAbsenceDays encoding and drop
+df['StudentAbsenceDays_encoded'] = df['StudentAbsenceDays'].map({'Above-7': 0, 'Under-7': 1})
+df = df.drop(columns=['StudentAbsenceDays'])
+
+# Define numeric columns for scaling
 numeric_columns = ['raisedhands', 'VisITedResources', 'AnnouncementsView', 'Discussion']
 
 # Separate features and target
@@ -75,6 +85,9 @@ y = df['Class'].map({'L': 0, 'M': 1, 'H': 2})
 feature_columns = list(X.columns)
 with open(os.path.join(MODELS_DIR, "columns.json"), "w") as f:
     json.dump(feature_columns, f, indent=4)
+
+print("Preprocessed feature columns in order:")
+print(feature_columns)
 
 # 3. Train-Test Split (80/20 Stratified)
 print("Splitting data...")
@@ -162,12 +175,7 @@ with open(os.path.join(MODELS_DIR, "feature_importances.json"), "w") as f:
 print("Feature importances written.")
 
 # 8. Export Sample Profiles for UI Loader
-# Pick 4 clear representative students from the original dataset
-# Index 0: Low performance student
-# Index 10: Medium performance student
-# Index 49: High performance student
-# Index 25: Low performance student
-sample_indices = [3, 11, 49, 134]  # Chosen from raw CSV records
+sample_indices = [3, 11, 49, 134]  # Representative profiles from raw CSV
 sample_profiles = []
 
 for idx in sample_indices:

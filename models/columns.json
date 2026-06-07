@@ -6,11 +6,6 @@
     "AnnouncementsView",
     "Discussion",
     "gender_encoded",
-    "Semester_encoded",
-    "Relation_encoded",
-    "ParentAnsweringSurvey_encoded",
-    "ParentschoolSatisfaction_encoded",
-    "StudentAbsenceDays_encoded",
     "SectionID_A",
     "SectionID_B",
     "SectionID_C",
@@ -25,5 +20,10 @@
     "Topic_Math",
     "Topic_Quran",
     "Topic_Science",
-    "Topic_Spanish"
+    "Topic_Spanish",
+    "Semester_encoded",
+    "Relation_encoded",
+    "ParentAnsweringSurvey_encoded",
+    "ParentschoolSatisfaction_encoded",
+    "StudentAbsenceDays_encoded"
 ]
