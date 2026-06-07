@@ -89,5 +89,4 @@ python app.py
 ```
 
 ### 5. Access the Web Dashboard
-Open your browser and navigate to:
-👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
+Open your browser and navigate to the local address displayed in your terminal (typically `http://127.0.0.1:5000` or `http://localhost:5000`).
