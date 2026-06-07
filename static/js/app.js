@@ -51,7 +51,7 @@ function switchTab(tabId) {
 
 // Load Model Evaluation Metrics & Feature Importances
 function loadModelMetrics() {
-    fetch('/api/metrics')
+    fetch('/api/metrics?t=' + Date.now())
         .then(res => res.json())
         .then(data => {
             const tbody = document.getElementById('metrics-table-body');
@@ -120,7 +120,7 @@ function loadModelMetrics() {
 
 // Load Sandbox Profiles
 function loadSampleProfiles() {
-    fetch('/api/samples')
+    fetch('/api/samples?t=' + Date.now())
         .then(res => res.json())
         .then(samples => {
             const container = document.getElementById('samples-container');
