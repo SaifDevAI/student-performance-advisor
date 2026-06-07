@@ -1,0 +1,74 @@
+{
+    "KNN": {
+        "training_accuracy": 0.7838541666666666,
+        "testing_accuracy": 0.71875,
+        "precision": 0.7162207466086777,
+        "recall": 0.71875,
+        "f1_score": 0.7151232842126412,
+        "confusion_matrix": [
+            [
+                23,
+                3,
+                0
+            ],
+            [
+                7,
+                26,
+                9
+            ],
+            [
+                0,
+                8,
+                20
+            ]
+        ]
+    },
+    "LogisticRegression": {
+        "training_accuracy": 0.8203125,
+        "testing_accuracy": 0.7604166666666666,
+        "precision": 0.7602372236577661,
+        "recall": 0.7604166666666666,
+        "f1_score": 0.7602161319073083,
+        "confusion_matrix": [
+            [
+                23,
+                3,
+                0
+            ],
+            [
+                3,
+                31,
+                8
+            ],
+            [
+                0,
+                9,
+                19
+            ]
+        ]
+    },
+    "RandomForest": {
+        "training_accuracy": 0.9192708333333334,
+        "testing_accuracy": 0.7916666666666666,
+        "precision": 0.8106942121887775,
+        "recall": 0.7916666666666666,
+        "f1_score": 0.7916938051816471,
+        "confusion_matrix": [
+            [
+                20,
+                6,
+                0
+            ],
+            [
+                3,
+                37,
+                2
+            ],
+            [
+                0,
+                9,
+                19
+            ]
+        ]
+    }
+}

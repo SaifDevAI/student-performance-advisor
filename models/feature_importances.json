@@ -1,0 +1,110 @@
+[
+    {
+        "feature": "raisedhands",
+        "importance": 0.1988536676612166
+    },
+    {
+        "feature": "VisITedResources",
+        "importance": 0.1869896309159289
+    },
+    {
+        "feature": "StudentAbsenceDays_encoded",
+        "importance": 0.14388468757278544
+    },
+    {
+        "feature": "AnnouncementsView",
+        "importance": 0.11911441313511514
+    },
+    {
+        "feature": "Discussion",
+        "importance": 0.07412477118869179
+    },
+    {
+        "feature": "Relation_encoded",
+        "importance": 0.05255138064608121
+    },
+    {
+        "feature": "ParentAnsweringSurvey_encoded",
+        "importance": 0.046988223426799744
+    },
+    {
+        "feature": "ParentschoolSatisfaction_encoded",
+        "importance": 0.02730950366569394
+    },
+    {
+        "feature": "GradeID",
+        "importance": 0.02586344803704207
+    },
+    {
+        "feature": "gender_encoded",
+        "importance": 0.023234015310683115
+    },
+    {
+        "feature": "StageID",
+        "importance": 0.011341104419703466
+    },
+    {
+        "feature": "SectionID_B",
+        "importance": 0.010775355139751594
+    },
+    {
+        "feature": "SectionID_A",
+        "importance": 0.010360485497535203
+    },
+    {
+        "feature": "Semester_encoded",
+        "importance": 0.008677853755568257
+    },
+    {
+        "feature": "Topic_IT",
+        "importance": 0.008066574231326498
+    },
+    {
+        "feature": "Topic_Geology",
+        "importance": 0.007691822846601523
+    },
+    {
+        "feature": "Topic_Biology",
+        "importance": 0.006321748702577577
+    },
+    {
+        "feature": "Topic_French",
+        "importance": 0.005958128964414708
+    },
+    {
+        "feature": "Topic_Chemistry",
+        "importance": 0.005041961566205453
+    },
+    {
+        "feature": "Topic_Arabic",
+        "importance": 0.0048611285649699035
+    },
+    {
+        "feature": "Topic_Science",
+        "importance": 0.004575652370875466
+    },
+    {
+        "feature": "Topic_English",
+        "importance": 0.004472729941822821
+    },
+    {
+        "feature": "Topic_History",
+        "importance": 0.0040093709645572465
+    },
+    {
+        "feature": "SectionID_C",
+        "importance": 0.00344125658453623
+    },
+    {
+        "feature": "Topic_Math",
+        "importance": 0.0024893548222735895
+    },
+    {
+        "feature": "Topic_Spanish",
+        "importance": 0.0017449226216008154
+    },
+    {
+        "feature": "Topic_Quran",
+        "importance": 0.0012568074456417557
+    }
+]

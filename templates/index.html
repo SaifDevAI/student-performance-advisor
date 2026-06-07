@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalboard 360: Student Performance & Advising Dashboard</title>
+    <!-- Outfit Google Font for a modern premium feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Dashboard Header -->
+        <header class="app-header">
+            <h1>Kalboard 360</h1>
+            <p class="subtitle">AI & ML Student Advising Dashboard</p>
+            <div class="tech-badge-container">
+                <span class="tech-badge">Random Forest</span>
+                <span class="tech-badge">BFS Pathfinding</span>
+                <span class="tech-badge">CSP Backtracking</span>
+                <span class="tech-badge">Forward Chaining</span>
+            </div>
+        </header>
+
+        <!-- Sample Profiles Shortcut Section -->
+        <div class="samples-bar card">
+            <span class="label">Quick Test Sandbox:</span>
+            <div id="samples-container" class="samples-buttons">
+                <!-- Loaded dynamically via JS -->
+                <span class="loader-text">Loading sample profiles...</span>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- Left Side: Configurator Form -->
+            <section class="config-panel card">
+                <h2>Configure Student Metrics</h2>
+                <form id="student-form">
+                    
+                    <!-- Numeric Engagement Sliders -->
+                    <div class="form-section">
+                        <h3>Engagement Indicators (0 - 100)</h3>
+                        
+                        <div class="slider-group">
+                            <label for="raisedhands">
+                                Raised Hands: <span id="raisedhands-val" class="badge-value">50</span>
+                            </label>
+                            <input type="range" id="raisedhands" min="0" max="100" value="50">
+                        </div>
+
+                        <div class="slider-group">
+                            <label for="VisITedResources">
+                                Visited Resources: <span id="visitedresources-val" class="badge-value">50</span>
+                            </label>
+                            <input type="range" id="VisITedResources" min="0" max="100" value="50">
+                        </div>
+
+                        <div class="slider-group">
+                            <label for="AnnouncementsView">
+                                Announcements Viewed: <span id="announcements-val" class="badge-value">50</span>
+                            </label>
+                            <input type="range" id="AnnouncementsView" min="0" max="100" value="50">
+                        </div>
+
+                        <div class="slider-group">
+                            <label for="Discussion">
+                                Discussion Participation: <span id="discussion-val" class="badge-value">50</span>
+                            </label>
+                            <input type="range" id="Discussion" min="0" max="100" value="50">
+                        </div>
+                    </div>
+
+                    <!-- Categorical Inputs Grid -->
+                    <div class="form-section">
+                        <h3>Academic & Demographic Details</h3>
+                        <div class="dropdown-grid">
+                            
+                            <div class="dropdown-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="StageID">School Stage</label>
+                                <select id="StageID">
+                                    <option value="lowerlevel">Lower Level</option>
+                                    <option value="MiddleSchool" selected>Middle School</option>
+                                    <option value="HighSchool">High School</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="GradeID">Grade Level</label>
+                                <select id="GradeID">
+                                    <option value="G-02">Grade 2</option>
+                                    <option value="G-04">Grade 4</option>
+                                    <option value="G-05">Grade 5</option>
+                                    <option value="G-06">Grade 6</option>
+                                    <option value="G-07" selected>Grade 7</option>
+                                    <option value="G-08">Grade 8</option>
+                                    <option value="G-09">Grade 9</option>
+                                    <option value="G-10">Grade 10</option>
+                                    <option value="G-11">Grade 11</option>
+                                    <option value="G-12">Grade 12</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="SectionID">Section ID</label>
+                                <select id="SectionID">
+                                    <option value="A">Section A</option>
+                                    <option value="B">Section B</option>
+                                    <option value="C">Section C</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="Topic">Topic Subject</label>
+                                <select id="Topic">
+                                    <option value="IT" selected>IT</option>
+                                    <option value="Math">Math</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Science">Science</option>
+                                    <option value="English">English</option>
+                                    <option value="Quran">Quran</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="French">French</option>
+                                    <option value="History">History</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Geology">Geology</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="Semester">Semester</label>
+                                <select id="Semester">
+                                    <option value="F">First Term (F)</option>
+                                    <option value="S">Second Term (S)</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="Relation">Responsible Guardian</label>
+                                <select id="Relation">
+                                    <option value="Father">Father</option>
+                                    <option value="Mum">Mother</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="StudentAbsenceDays">Absence Days</label>
+                                <select id="StudentAbsenceDays">
+                                    <option value="Under-7">Under 7 Days</option>
+                                    <option value="Above-7">Above 7 Days</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="ParentAnsweringSurvey">Parent Answered Survey</label>
+                                <select id="ParentAnsweringSurvey">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-group">
+                                <label for="ParentschoolSatisfaction">School Satisfaction</label>
+                                <select id="ParentschoolSatisfaction">
+                                    <option value="Good">Good</option>
+                                    <option value="Bad">Bad</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="glow-button">Analyze Performance & advising</button>
+                </form>
+            </section>
+
+            <!-- Right Side: Outputs & Diagnostics Tabs -->
+            <div class="output-container">
+                <!-- Navigation Tabs -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" onclick="switchTab('advising-tab')">Advising Engine</button>
+                    <button class="tab-btn" onclick="switchTab('metrics-tab')">Model Performance & accuracy</button>
+                </div>
+
+                <!-- TAB 1: AI/ML Advising Output -->
+                <section id="advising-tab" class="tab-content active">
+                    
+                    <!-- Prediction Banner -->
+                    <div id="result-banner" class="result-banner default-state">
+                        <div class="banner-body">
+                            <span class="small-label">Predicted Academic Performance Class</span>
+                            <h2 id="predicted-label">Enter details and hit analyze</h2>
+                            <div class="confidence-wrapper">
+                                <span class="label">Confidence Score:</span>
+                                <span id="confidence-score">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BFS Advising Pathway -->
+                    <div class="result-card card">
+                        <h3>BFS Search Advising Pathway</h3>
+                        <p class="description-text">Shortest sequence of steps to guide this student risk profile to 'Pass':</p>
+                        <div id="bfs-stepper" class="stepper">
+                            <span class="placeholder-text">Pending prediction...</span>
+                        </div>
+                    </div>
+
+                    <!-- CSP Study Plan Planner -->
+                    <div class="result-card card">
+                        <h3>CSP Personalized Study Planner</h3>
+                        <p class="description-text">Optimal parameters computed using backtracking search to satisfy academic constraints:</p>
+                        <div id="csp-details" class="csp-grid">
+                            <div class="csp-item">
+                                <span class="csp-label">Study Hours</span>
+                                <span id="csp-hours" class="csp-val">-</span>
+                            </div>
+                            <div class="csp-item">
+                                <span class="csp-label">Tutoring Status</span>
+                                <span id="csp-tutoring" class="csp-val">-</span>
+                            </div>
+                            <div class="csp-item">
+                                <span class="csp-label">Monitoring Plan</span>
+                                <span id="csp-monitoring" class="csp-val">-</span>
+                            </div>
+                            <div class="csp-item">
+                                <span class="csp-label">Attendance Target</span>
+                                <span id="csp-attendance" class="csp-val">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forward Chaining Trace -->
+                    <div class="result-card card">
+                        <h3>Forward Chaining Inference Log</h3>
+                        <p class="description-text">Logical conclusions deduced by applying the knowledge base rules to initial facts:</p>
+                        <div class="inference-body">
+                            <div class="facts-panel">
+                                <strong>Initial Facts:</strong>
+                                <div id="initial-facts-list" class="facts-list">None</div>
+                            </div>
+                            <div class="trace-panel">
+                                <strong>Inference Trace:</strong>
+                                <ul id="inference-log" class="log-list">
+                                    <li class="placeholder-text">Pending analysis...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 2: Model Performance & Accuracy Metrics -->
+                <section id="metrics-tab" class="tab-content">
+                    
+                    <!-- Accuracy Comparisons Card -->
+                    <div class="result-card card">
+                        <h3>Supervised Model Comparisons</h3>
+                        <p class="description-text">Overall training and evaluation scores on the 20% test partition:</p>
+                        <div class="table-container">
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Train Acc</th>
+                                        <th>Test Acc</th>
+                                        <th>Precision</th>
+                                        <th>Recall</th>
+                                        <th>F1 Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="metrics-table-body">
+                                    <!-- Populated dynamically -->
+                                    <tr><td colspan="6" class="center">Loading model metrics...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Feature Importances Card -->
+                    <div class="result-card card">
+                        <h3>Random Forest Feature Importances</h3>
+                        <p class="description-text">Relative contribution of behavioral features to model classification decisions:</p>
+                        <div id="importance-list" class="importance-list">
+                            <!-- Populated dynamically -->
+                            <span class="placeholder-text">Loading importances...</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
