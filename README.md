@@ -57,7 +57,7 @@ The training script evaluates three baseline models on a 20% test partition:
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **KNN (K-Neighbors)** | 78.4% | 71.9% | 71.6% | 71.9% | 71.5% |
 | **Logistic Regression** | 82.0% | 76.0% | 76.0% | 76.0% | 76.0% |
-| **Random Forest (Primary)** ⭐ | **91.9%** | **79.2%** | **81.1%** | **79.2%** | **79.2%** |
+| **Random Forest (Primary)** ⭐ | **91.1%** | **81.3%** | **82.6%** | **81.3%** | **81.3%** |
 
 ---
 
